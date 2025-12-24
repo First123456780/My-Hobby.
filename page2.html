@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Hobby | Playing Football</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--neon-green:#22ff88;
+--neon-blue:#38bdf8;
+--neon-pink:#ff4ecd;
+--yellow:#ffe066;
+--dark:#020617;
+--card-bg:rgba(2,6,23,0.65);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Poppins','Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;
+min-height:100vh;
+color:white;
+background:linear-gradient(-45deg,#020617,#020617,#0f172a,#1e293b,#020617);
+background-size:400% 400%;
+animation:bgMove 20s ease infinite;
+overflow-x:hidden;
+
+/* PAGE TRANSITION */
+opacity:1;
+transition:opacity 0.6s ease, transform 0.6s ease;
+}
+
+body.fade-out{
+opacity:0;
+transform:translateY(20px);
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.float{
+position:fixed;
+font-size:40px;
+opacity:0.15;
+animation:float 14s linear infinite;
+pointer-events:none;
+}
+
+.float:nth-child(1){top:10%;left:8%;animation-duration:12s;}
+.float:nth-child(2){top:70%;left:15%;animation-duration:16s;}
+.float:nth-child(3){top:30%;left:80%;animation-duration:18s;}
+.float:nth-child(4){top:80%;left:65%;animation-duration:14s;}
+
+@keyframes float{
+0%{transform:translateY(0) rotate(0deg);}
+50%{transform:translateY(-60px) rotate(180deg);}
+100%{transform:translateY(0) rotate(360deg);}
+}
+
+nav{
+position:sticky;
+top:0;
+z-index:100;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 45px;
+background:rgba(2,6,23,0.7);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+nav h2{
+font-weight:800;
+background:linear-gradient(90deg,var(--neon-green),var(--neon-blue),var(--neon-pink));
+-webkit-background-clip:text;
+color:transparent;
+}
+
+nav a{
+color:#e5e7eb;
+text-decoration:none;
+margin-left:25px;
+font-weight:600;
+transition:0.3s;
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0;
+height:2px;
+background:var(--neon-green);
+transition:0.3s;
+}
+
+nav a:hover::after{width:100%;}
+nav a:hover{color:var(--neon-green);}
+
+header{
+max-width:1200px;
+margin:auto;
+padding:90px 50px;
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+header h1{
+font-size:3.8rem;
+font-weight:800;
+line-height:1.1;
+background:linear-gradient(90deg,var(--yellow),var(--neon-green),var(--neon-blue));
+background-size:200% 200%;
+-webkit-background-clip:text;
+color:transparent;
+animation:textGlow 4s ease infinite;
+}
+
+@keyframes textGlow{
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
+}
+
+header p{
+margin-top:22px;
+font-size:1.2rem;
+line-height:1.7;
+color:#dbeafe;
+}
+
+.hero-img{
+height:330px;
+border-radius:30px;
+background:url('ball1.jpg') center/cover no-repeat;
+box-shadow:0 0 80px rgba(34,255,136,0.45);
+animation:pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulse{
+from{box-shadow:0 0 40px rgba(34,255,136,0.3);}
+to{box-shadow:0 0 90px rgba(56,189,248,0.6);}
+}
+
+main{
+max-width:1200px;
+margin:0 auto 100px;
+padding:0 45px;
+display:flex;
+flex-direction:column;
+gap:45px;
+}
+
+.card{
+background:var(--card-bg);
+padding:40px;
+border-radius:34px;
+border:1px solid rgba(255,255,255,0.15);
+box-shadow:0 25px 90px rgba(0,0,0,0.65);
+transition:0.45s;
+position:relative;
+overflow:hidden;
+width:100%;
+}
+
+.card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(120deg,transparent,rgba(34,255,136,0.15),transparent);
+opacity:0;
+transition:0.4s;
+}
+
+.card:hover::before{opacity:1;}
+
+.card:hover{
+transform:translateY(-12px) scale(1.03);
+border-color:var(--neon-green);
+box-shadow:0 0 80px rgba(34,255,136,0.45);
+}
+
+.card h2{
+font-size:1.9rem;
+margin-bottom:16px;
+background:linear-gradient(270deg,#38bdf8,#ff4e50,#22ff88,#38bdf8);
+background-size:600% 600%;
+-webkit-background-clip:text;
+color:transparent;
+animation:titleShift 6s ease infinite;
+}
+
+@keyframes titleShift{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.card p{
+font-size:1.15rem;
+line-height:1.8;
+color:#f1f5f9;
+}
+
+.image-box{
+margin-top:25px;
+width:100%;
+height:340px;
+border-radius:28px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,rgba(34,255,136,0.18),rgba(56,189,248,0.18));
+box-shadow:0 15px 60px rgba(0,0,0,0.6);
+overflow:hidden;
+transition:0.45s;
+}
+
+.image-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:22px;
+}
+
+table{width:100%;border-collapse:collapse;margin-top:18px;}
+th,td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.15);}
+th{color:var(--neon-blue);text-align:left;}
+
+.fun{
+margin-top:18px;
+padding:18px 22px;
+background:linear-gradient(135deg,rgba(34,255,136,0.2),rgba(56,189,248,0.15));
+border-left:5px solid var(--neon-green);
+border-radius:14px;
+font-style:italic;
+}
+
+footer{
+text-align:center;
+padding:50px 20px;
+color:#cbd5f5;
+}
+
+footer a{
+display:inline-block;
+margin-top:15px;
+padding:14px 34px;
+background:linear-gradient(90deg,var(--neon-green),var(--neon-blue),var(--neon-pink));
+color:#020617;
+font-weight:800;
+text-decoration:none;
+border-radius:25px;
+transition:0.4s;
+}
+
+@media(max-width:900px){
+header{grid-template-columns:1fr;padding:60px 30px;}
+header h1{font-size:2.7rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="float">⚽</div>
+<div class="float">✨</div>
+<div class="float">🔥</div>
+<div class="float">⚡</div>
+
+<nav>
+<h2>My Hobby</h2>
+<div>
+<a href="page1.html" class="nav-link">Home</a>
+<a href="page2.html" class="nav-link">Football</a>
+<a href="page3.html" class="nav-link">Music</a>
+<a href="page4.html" class="nav-link">Games</a>
+</div>
+</nav>
+
+<header>
+<div>
+<h1>Playing Football</h1>
+<p>
+Football is my favorite hobby because it is exciting, fast-paced, and full of energy.
+Playing football keeps me healthy, builds teamwork skills, and gives me confidence.
+</p>
+</div>
+<div class="hero-img"></div>
+</header>
+
+<main>
+<section class="card">
+<h2>⚽ What Is Football?</h2>
+<p>Football is a team sport where players work together using skill, speed, and strategy to score goals.</p>
+<div class="image-box"><img src="kkk.jpg"></div>
+</section>
+
+<section class="card">
+<h2>🔥 My Experience</h2>
+<p>I have played football for several years with friends and at school.</p>
+<div class="image-box"><img src="fg.avif"></div>
+</section>
+
+<section class="card">
+<h2>📅 Equipment & Schedule</h2>
+<table>
+<tr><th>Item</th><th>Details</th></tr>
+<tr><td>Boots</td><td>Firm ground</td></tr>
+<tr><td>Training</td><td>Monday & Friday</td></tr>
+<tr><td>Position</td><td>Midfielder</td></tr>
+</table>
+<div class="image-box"><img src="ooo.jpg"></div>
+</section>
+
+<section class="card">
+<h2>💚 Why I Love It</h2>
+<p>Football makes me happy, reduces stress, and motivates me.</p>
+<div class="fun">Fun fact: Playing football improves brain focus!</div>
+<div class="image-box"><img src="ki.webp"></div>
+</section>
+</main>
+
+<footer>
+<p>© 2025 My Hobby Website</p>
+<a href="index.html" class="nav-link">← Back to Homepage</a>
+</footer>
+
+
+<script>
+document.querySelectorAll('.nav-link').forEach(link=>{
+  link.addEventListener('click',function(e){
+    e.preventDefault();
+    const target=this.href;
+    document.body.classList.add('fade-out');
+    setTimeout(()=>{window.location.href=target;},600);
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

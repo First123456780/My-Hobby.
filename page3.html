@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Hobby | Listening to Music</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cream:#f5f5dc;
+      --olive:#6b8e23;
+      --neon:#9fff57;
+      --dark:#0b0b0b;
+      --card-bg:rgba(20,20,20,0.88);
+      --glow:0 0 20px rgba(159,255,87,0.35);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      font-family:'Poppins',sans-serif;
+      min-height:100vh;
+      color:var(--cream);
+      background:
+        radial-gradient(circle at top,#1a1a1a,#000),
+        linear-gradient(120deg,transparent 40%,rgba(159,255,87,0.05),transparent 60%);
+      overflow-x:hidden;
+      transition:opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    body.fade-out{
+      opacity:0;
+      transform:translateY(20px);
+    }
+
+    /* floating icons */
+    .float{
+      position:fixed;
+      font-size:42px;
+      opacity:0.15;
+      animation:float 16s ease-in-out infinite;
+      pointer-events:none;
+      filter:drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    }
+
+    .float:nth-child(1){top:12%;left:6%;}
+    .float:nth-child(2){top:75%;left:18%;animation-delay:2s;}
+    .float:nth-child(3){top:30%;left:82%;animation-delay:4s;}
+    .float:nth-child(4){top:85%;left:60%;animation-delay:1s;}
+
+    @keyframes float{
+      0%{transform:translateY(0) rotate(0deg);}
+      50%{transform:translateY(-90px) rotate(180deg);}
+      100%{transform:translateY(0) rotate(360deg);}
+    }
+
+    nav{
+      position:sticky;top:0;z-index:100;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 45px;
+      background:rgba(0,0,0,0.75);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    nav h2{
+      font-weight:800;
+      letter-spacing:3px;
+      color:var(--cream);
+      text-shadow:var(--glow);
+    }
+
+    nav a{
+      color:#ccc;
+      text-decoration:none;
+      margin-left:26px;
+      font-weight:600;
+      position:relative;
+      transition:0.3s;
+    }
+
+    nav a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      background:var(--neon);
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:var(--neon);
+      text-shadow:var(--glow);
+    }
+
+    nav a:hover::after{width:100%;}
+
+    header{
+      max-width:1200px;
+      margin:auto;
+      padding:90px 50px;
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    header h1{
+      font-size:3.6rem;
+      font-weight:800;
+      letter-spacing:1px;
+      text-shadow:0 0 25px rgba(159,255,87,0.2);
+    }
+
+    header p{
+      margin-top:20px;
+      font-size:1.15rem;
+      line-height:1.7;
+      color:#ddd;
+    }
+
+    main{
+      max-width:1200px;
+      margin:0 auto 100px;
+      padding:0 45px;
+      display:flex;
+      flex-direction:column;
+      gap:45px;
+    }
+
+    .card{
+      background:var(--card-bg);
+      padding:45px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 25px 80px rgba(0,0,0,0.85);
+      transition:0.45s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg,transparent 40%,rgba(159,255,87,0.08),transparent 60%);
+      opacity:0;
+      transition:0.4s;
+    }
+
+    .card:hover::before{opacity:1;}
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.01);
+      border-color:var(--neon);
+      box-shadow:0 30px 100px rgba(0,0,0,0.9), var(--glow);
+    }
+
+    .card h2{
+      font-size:1.9rem;
+      margin-bottom:16px;
+      letter-spacing:1px;
+      color:var(--neon);
+    }
+
+    .card p{
+      font-size:1.1rem;
+      line-height:1.8;
+      color:#eee;
+    }
+
+    .image-box{
+      margin-top:25px;
+      width:100%;
+      height:320px;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 18px 55px rgba(0,0,0,0.75);
+      transition:0.4s;
+    }
+
+    .image-box:hover{
+      transform:scale(1.03);
+    }
+
+    .image-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:grayscale(30%) contrast(110%);
+    }
+
+    table{width:100%;border-collapse:collapse;margin-top:18px;}
+    th,td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.15);}
+    th{color:var(--neon);text-align:left;}
+
+    /* lyric box */
+    .lyric{
+      font-size:1.3rem;
+      line-height:1.9;
+      text-align:center;
+      font-style:italic;
+      color:#f5f5dc;
+      padding:40px 35px;
+      background:
+        linear-gradient(135deg,rgba(159,255,87,0.15),rgba(255,255,255,0.05));
+      border-radius:24px;
+      border:1px solid rgba(159,255,87,0.35);
+      box-shadow:var(--glow);
+      position:relative;
+    }
+
+    .lyric::before,
+    .lyric::after{
+      content:'“';
+      position:absolute;
+      font-size:4rem;
+      color:rgba(159,255,87,0.4);
+    }
+
+    .lyric::before{top:-20px;left:20px;}
+    .lyric::after{content:'”';bottom:-35px;right:20px;}
+
+    footer{
+      text-align:center;
+      padding:50px 20px;
+      color:#aaa;
+    }
+
+    footer a{
+      display:inline-block;
+      margin-top:15px;
+      padding:14px 34px;
+      background:var(--neon);
+      color:black;
+      font-weight:800;
+      text-decoration:none;
+      border-radius:30px;
+      transition:0.3s;
+    }
+
+    footer a:hover{
+      transform:scale(1.08);
+      box-shadow:var(--glow);
+    }
+
+    @media(max-width:900px){
+      header{grid-template-columns:1fr;padding:60px 30px;}
+      header h1{font-size:2.6rem;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="float">🎸</div>
+  <div class="float">🎧</div>
+  <div class="float">🎵</div>
+  <div class="float">⭐</div>
+
+  <nav>
+    <h2>MY HOBBY</h2>
+    <div>
+      <a href="page1.html" class="nav-link">Home</a>
+      <a href="page2.html" class="nav-link">Football</a>
+      <a href="page3.html" class="nav-link">Music</a>
+      <a href="page4.html" class="nav-link">Games</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <h1>Listening to Music</h1>
+      <p>
+        Music helps me escape, think, and feel inspired.
+        It plays a big role in my daily life and mood.
+      </p>
+    </div>
+    <div class="image-box"><img src="ui.jpg"></div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>🎧 Why Music Matters</h2>
+      <p>Music helps me relax, focus, and express emotions that words cannot.</p>
+      <div class="image-box"><img src="lo.webp"></div>
+    </section>
+
+    <section class="card">
+      <h2>🎸 Favorite Artist: Oasis</h2>
+      <p>Oasis stands out because of their raw sound and Britpop attitude.</p>
+      <div class="image-box"><img src="rty.jpg"></div>
+    </section>
+
+    <section class="card">
+      <h2>📀 Favorite Songs</h2>
+      <table>
+        <tr><th>Song</th><th>Why</th></tr>
+        <tr><td>Wonderwall</td><td>Emotional and iconic</td></tr>
+        <tr><td>Don't Look Back in Anger</td><td>Powerful message</td></tr>
+        <tr><td>Champagne Supernova</td><td>Dreamy rock vibe</td></tr>
+      </table>
+    </section>
+
+    <!-- CHANGED LAST BOX -->
+    <section class="card">
+      <h2>⭐ My Favorite Lyric</h2>
+      <div class="lyric">
+        Today is gonna be the day<br>
+        That they're gonna throw it back to you
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 My Hobby Website</p>
+    <a href="page1.html" class="nav-link">← Back to Homepage</a>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-link').forEach(link=>{
+      link.addEventListener('click',function(e){
+        e.preventDefault();
+        const target=this.href;
+        document.body.classList.add('fade-out');
+        setTimeout(()=>{window.location.href=target;},600);
+      });
+    });
+  </script>
+
+</body>
+</html>

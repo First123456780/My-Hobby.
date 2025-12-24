@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Hobby Homepage</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --blue:#5ecbff;
+    --blue-soft:#b6e8ff;
+    --dark:#020b17;
+}
+
+*{box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:radial-gradient(circle at 20% 20%,#020b17,#031b34,#062c4b,#0a3e66,#0c5c8a);
+    background-size:400% 400%;
+    animation:bgShift 18s ease infinite;
+    color:#eaf7ff;
+    margin:0;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* background animation */
+@keyframes bgShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* floating emojis */
+.float{
+    position:fixed;
+    font-size:42px;
+    opacity:0.15;
+    animation:float 16s ease-in-out infinite;
+    pointer-events:none;
+}
+.float:nth-child(1){top:12%;left:8%;}
+.float:nth-child(2){top:65%;left:15%;animation-delay:3s;}
+.float:nth-child(3){top:28%;left:80%;animation-delay:6s;}
+.float:nth-child(4){top:78%;left:60%;animation-delay:9s;}
+
+@keyframes float{
+    0%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-70px) rotate(180deg);}
+    100%{transform:translateY(0) rotate(360deg);}
+}
+
+/* header */
+header{
+    text-align:center;
+    padding:110px 20px 40px;
+}
+
+header h1{
+    font-size:3.6em;
+    font-weight:800;
+    margin:0;
+    background:linear-gradient(135deg,var(--blue),var(--blue-soft));
+    -webkit-background-clip:text;
+    color:transparent;
+    text-shadow:0 0 35px rgba(94,203,255,0.5);
+    animation:titleGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow{
+    from{text-shadow:0 0 20px var(--blue);}
+    to{text-shadow:0 0 80px var(--blue-soft);}
+}
+
+.intro{
+    max-width:900px;
+    margin:20px auto 0;
+    text-align:center;
+    font-size:1.25em;
+    opacity:0;
+    animation:fadeIn 1.2s forwards ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* hobby list */
+.hobby-list{
+    max-width:900px;
+    margin:70px auto;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+
+.hobby-link{
+    text-decoration:none;
+    color:inherit;
+}
+
+.hobby-item{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(20px);
+    padding:30px 35px;
+    border-radius:26px;
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 15px 50px rgba(0,0,0,0.4);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:0.45s;
+    position:relative;
+    overflow:hidden;
+    opacity:0;
+    animation:itemAppear 1s ease forwards;
+}
+
+/* shimmer */
+.hobby-item::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,transparent,rgba(94,203,255,0.25),transparent);
+    opacity:0;
+    transition:0.4s;
+}
+
+.hobby-item:hover::before{opacity:1;}
+
+@keyframes itemAppear{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.hobby-item:hover{
+    transform:translateY(-14px) scale(1.02);
+    box-shadow:0 0 50px var(--blue);
+    border-color:var(--blue);
+}
+
+.hobby-item h2{
+    margin:0;
+    font-size:1.7em;
+}
+
+/* open button */
+.open-btn{
+    font-size:1.1em;
+    padding:12px 26px;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--blue),var(--blue-soft));
+    color:#003c57;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:0.35s;
+}
+
+.open-btn::after{
+    content:'→';
+    transition:0.3s;
+}
+
+.hobby-item:hover .open-btn::after{
+    transform:translateX(6px);
+}
+
+.hobby-item:hover .open-btn{
+    box-shadow:0 0 30px rgba(94,203,255,0.7);
+}
+
+/* footer */
+footer{
+    text-align:center;
+    margin-top:90px;
+    padding:45px;
+    color:#dff7ff;
+    opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<!-- floating emojis -->
+<div class="float">⚽</div>
+<div class="float">🎧</div>
+<div class="float">🎮</div>
+<div class="float">✨</div>
+
+<header>
+    <h1>Welcome to My Hobby Page</h1>
+</header>
+
+<div class="intro">
+    <p>
+        Hello! My name is <strong>First</strong>.<br>
+        These are my favorite hobbies that I truly enjoy.<br>
+        Click any card to explore more!
+    </p>
+</div>
+
+<div class="hobby-list">
+
+    <a href="page2.html" class="hobby-link">
+        <div class="hobby-item" style="animation-delay:0.2s;">
+            <h2>⚽ Playing Football</h2>
+            <span class="open-btn">Open</span>
+        </div>
+    </a>
+
+    <a href="page3.html" class="hobby-link">
+        <div class="hobby-item" style="animation-delay:0.4s;">
+            <h2>🎧 Listening to Music</h2>
+            <span class="open-btn">Open</span>
+        </div>
+    </a>
+
+    <a href="page4.html" class="hobby-link">
+        <div class="hobby-item" style="animation-delay:0.6s;">
+            <h2>🎮 Playing Game</h2>
+            <span class="open-btn">Open</span>
+        </div>
+    </a>
+
+</div>
+
+<footer>© 2025 My Personal Hobby Website</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Hobby | Gaming</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#030308;
+  --panel:#0c0f1f;
+  --neon:#00ffe1;
+  --pink:#ff2fd1;
+  --purple:#7b5cff;
+  --text:#e9f1ff;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 2px,
+      transparent 4px
+    ),
+    radial-gradient(circle at top,#0c1233,#000);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* FLOAT ICONS */
+.float{
+  position:fixed;
+  font-size:38px;
+  opacity:.15;
+  animation:float 18s linear infinite;
+  pointer-events:none;
+}
+
+.float:nth-child(1){top:12%;left:6%;}
+.float:nth-child(2){top:78%;left:18%;animation-duration:22s;}
+.float:nth-child(3){top:30%;left:84%;animation-duration:26s;}
+.float:nth-child(4){top:88%;left:62%;animation-duration:20s;}
+
+@keyframes float{
+  0%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-100px) rotate(180deg);}
+  100%{transform:translateY(0) rotate(360deg);}
+}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 45px;
+  background:rgba(5,8,25,.9);
+  backdrop-filter:blur(8px);
+  border-bottom:2px solid rgba(0,255,225,.2);
+}
+
+nav h2{
+  font-family:'Press Start 2P';
+  font-size:1.1rem;
+  color:var(--neon);
+}
+
+nav a{
+  color:#9db0ff;
+  text-decoration:none;
+  margin-left:26px;
+  font-weight:600;
+}
+
+nav a:hover{
+  color:var(--neon);
+}
+
+/* HEADER */
+header{
+  max-width:1200px;
+  margin:auto;
+  padding:90px 50px;
+}
+
+.pixel-title{
+  font-family:'Press Start 2P';
+  font-size:3.1rem;
+  color:var(--neon);
+  text-shadow:3px 3px 0 var(--purple),-3px -3px 0 var(--pink);
+}
+
+/* MAIN */
+main{
+  max-width:1200px;
+  margin:0 auto 100px;
+  padding:0 45px;
+  display:flex;
+  flex-direction:column;
+  gap:45px;
+}
+
+/* CARD */
+.card{
+  background:linear-gradient(145deg,#0b1028,#0f1535);
+  padding:45px;
+  border-radius:22px;
+  border:2px solid rgba(0,255,225,.15);
+  box-shadow:0 30px 90px rgba(0,0,0,.9);
+}
+
+.card h2{
+  font-family:'Press Start 2P';
+  font-size:1.3rem;
+  margin-bottom:18px;
+  color:var(--neon);
+}
+
+/* FAVORITE GRID */
+.favorite-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-top:30px;
+}
+
+/* GAME BOX (NO BORDER) */
+.game-box{
+  padding:30px;
+  border-radius:18px;
+  background:#0b1028;
+  border:none; /* ❌ NO LINE */
+  text-align:center;
+  transition:.35s;
+}
+
+/* IMAGE BOX (NO DASHED LINE) */
+.game-image{
+  width:100%;
+  height:160px;
+  margin:15px 0;
+  border-radius:12px;
+  overflow:hidden;
+  border:none; /* ❌ NO LINE */
+}
+
+.game-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* HOVER GLOW */
+.game-box.brawl:hover{
+  box-shadow:0 0 25px var(--pink);
+  transform:translateY(-6px);
+}
+
+.game-box.fc:hover{
+  box-shadow:0 0 25px var(--neon);
+  transform:translateY(-6px);
+}
+
+.game-box.rov:hover{
+  box-shadow:0 0 25px var(--purple);
+  transform:translateY(-6px);
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+  font-family:'Press Start 2P';
+  font-size:.8rem;
+}
+
+th,td{
+  border:2px solid var(--neon);
+  padding:14px;
+}
+
+th{
+  color:var(--neon);
+  background:rgba(0,255,225,.1);
+}
+
+/* FUN BOX */
+.fun{
+  margin-top:20px;
+  padding:35px;
+  font-family:'Press Start 2P';
+  text-align:center;
+  background:#0b1028;
+  border:3px solid var(--neon);
+  box-shadow:0 0 25px rgba(0,255,225,.6);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .favorite-grid{grid-template-columns:1fr;}
+  .pixel-title{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="float">🎮</div>
+<div class="float">🕹️</div>
+<div class="float">⚡</div>
+<div class="float">⭐</div>
+
+<nav>
+  <h2>MY HOBBY</h2>
+  <div>
+    <a href="page1.html">Home</a>
+    <a href="page2.html">Football</a>
+    <a href="page3.html">Music</a>
+    <a href="page4.html">Games</a>
+  </div>
+</nav>
+
+<header>
+  <h1 class="pixel-title">PLAYING GAMES</h1>
+  <p>Gaming helps me relax and enjoy competition.</p>
+</header>
+
+<main>
+
+<section class="card">
+  <h2>FAVORITE GAMES</h2>
+
+  <div class="favorite-grid">
+    <div class="game-box brawl">
+      <h3>BRAWL STARS</h3>
+      <div class="game-image"><img src="gty.webp"></div>
+      <p>Fast-paced action.</p>
+    </div>
+
+    <div class="game-box fc">
+      <h3>FC MOBILE</h3>
+      <div class="game-image"><img src="unnamed.png"></div>
+      <p>Real football experience.</p>
+    </div>
+
+    <div class="game-box rov">
+      <h3>ROV</h3>
+      <div class="game-image"><img src="yuy.jpg"></div>
+      <p>Team strategy gameplay.</p>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>TOP GAMES</h2>
+  <table>
+    <tr><th>GAME</th><th>WHY</th></tr>
+    <tr><td>BRAWL STARS</td><td>FAST & FUN</td></tr>
+    <tr><td>FC MOBILE</td><td>REAL FOOTBALL FEEL</td></tr>
+    <tr><td>ROV</td><td>TEAM STRATEGY</td></tr>
+  </table>
+</section>
+
+<section class="card">
+  <h2>GAMING & ME</h2>
+  <div class="fun">🎮 GAMING BOOSTS REFLEXES ⚡</div>
+</section>
+
+</main>
+
+</body>
+</html>
+
+
+
+
